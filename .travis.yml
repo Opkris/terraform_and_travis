@@ -9,8 +9,6 @@ branches:
 before_install:
 - openssl aes-256-cbc -K $encrypted_3bf60d793673_key -iv $encrypted_3bf60d793673_iv
   -in terraform.json.enc -out terraform.json -d
-- openssl aes-256-cbc -K $encrypted_8b8976449902_key -iv $encrypted_8b8976449902_iv
-  -in terraform.json.enc -out terraform.json -d
 - curl https://sdk.cloud.google.com | bash > /dev/null
 - source "$HOME/google-cloud-sdk/path.bash.inc"
 - gcloud config set project "${GCP_PROJECT_ID}"
