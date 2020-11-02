@@ -7,10 +7,9 @@ branches:
   only:
   - master
 before_install:
-- openssl aes-256-cbc -K $encrypted_3bf60d793673_key -iv $encrypted_3bf60d793673_iv
-  -in terraform.json.enc -out terraform.json -d
 - curl https://sdk.cloud.google.com | bash > /dev/null
 - source "$HOME/google-cloud-sdk/path.bash.inc"
+- gcloud auth activate-service-account --key-file=terraform.json
 - gcloud config set project "${GCP_PROJECT_ID}"
 - export GOOGLE_APPLICATION_CREDENTIALS=./terraform.json
 - wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
